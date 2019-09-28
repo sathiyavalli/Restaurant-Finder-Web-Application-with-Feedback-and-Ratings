@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="custom.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="custom.css">
+    <script>
+      $( function() {
+        $("#list").change(function(){
+          /*var test = {
+"Persons": [{"firstname":"john", "lastname":"doe"},{"firstname":"jane","lastname":"doe"}]
+}
+alert(test.Persons[1].lastname);*/
+          $("#tags").val('');
+          var vg = $("#list option:selected").val();
+          if(vg == "Chennai"){
+            var availableTags = ["SaravanaBhavan","SangeethaRestaurant","KFC"];
+            $("#tags").removeAttr("disabled");
+            $("#tags").autocomplete({
+              source:availableTags}
+                                   );
+          }
+          if(vg == "Coimbatore"){
+            var availableTags2 = ["Subway","Aryabhavan","Royalrestaurant"]
+            $("#tags").removeAttr("disabled");
+            $("#tags").autocomplete({
+              source:availableTags2}
+                                   );
+          }
+          if(vg == "Trichy"){
+            var availableTags3 = ["Highway Inn","Krishna bhavan","Hot Chips"]
+            $("#tags").removeAttr("disabled");
+            $("#tags").autocomplete({
+              source:availableTags3}
+                                   );
+          }
+        }
+                         );
+        $(document).ready(function() {
+          var displayResources = $("#display-resources");
+          $.ajax({
+            type: "GET",
+            url: "resources.json", // Using our resources.json file to serve results
+            success: function(result) {
+              $("#search_btn").click(function(event){
+                for(var i =0; i <= result.length;i++){
+                  event.preventDefault();
+                  var city = $("#list option:selected").val();
+                  var restaurant = $("#tags").val();
+                  /*$.post( 
+                  "result.php",
+                  { restaurant : restaurant, city : city },
+                  function(response) {
+                     $("#result").html(response);
+                  }
+               );*/
+                  if(restaurant == ""){
+                    $(".restaurant_list").show();
+                    $(".res_empty").html("No datas found.Please enter the restaurant name");
+                  }
+                  if((result[i].city == city) && (result[i].restaurant == restaurant)){
+                    $.post( "result.php", {
+                      restaurant: result[i].restaurant, city: result[i].city, location: result[i].Location, timing: result[i].Hours }
+                          )
+                      .done(function( data ) {
+                      $(".res_empty").empty();
+                      $(".restaurant_list").show();
+                      $(".res_name").html(data);
+                    }
+                           );
+                  }
+                  else{
+                    $(".restaurant_list").show();
+                    $(".res_empty").html("No datas found.Please enter the available restaurant name");
+                  }
+                  //}
+                }
+              }
+                                    );
+            }
+          }
+                );
+        }
+                         );
+      }
+       );
+    </script>
+  </head>
+  <body class="whole_bg">
+    <div class="container-fluid bg">
+      <div class="row">&nbsp;
+      </div>
+      <div class="row">&nbsp;
+      </div>
+      <div class="row">&nbsp;
+      </div>
+      <div class="row">&nbsp;
+      </div>
+      <div class="row">&nbsp;
+      </div>
+      <div class="container-fluid text-bg">
+        <div class="row">
+          <div class="col-sm-12 no-padding">
+            <div class="text col-sm-12">
+              <div class="row">&nbsp;
+              </div>Find the best food and restaurant in the cities
+            </div>
+          </div>
+          <form class="row col-sm-12" method="post">
+            <div class="form-group col-sm-3 offset-sm-3">
+              <select class="form-control" id="list">
+                <option value="" selected disabled hidden>Choose here
+                </option>
+                <option>Chennai
+                </option>
+                <option>Coimbatore
+                </option>
+                <option>Trichy
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-sm-3 col-xs-12 ui-widget">
+              <input type="text" class="form-control" id="tags" autocomplete="off">
+            </div>
+            <div class="form-group col-sm-3 col-xs-12">
+              <button type="submit" class="btn btn-primary col-xs-4" id="search_btn" value="submit">Search
+              </button>
+            </div>
+            <div style="clear:both;">
+            </div>
+          </form>
+          <div class="restaurant_list col-sm-6 offset-sm-3">
+            <div class="res_name col-sm-12">
+            </div>
+            <div class="res_empty col-sm-12">
+            </div>
+          </div>
+        </div>
+        <div class="row">&nbsp;
+        </div>
+        <div class="row">&nbsp;
+        </div>		
+      </div>
+    </div>
+    <div id="display-resources">
+    </div>
+  </body>
+</html>

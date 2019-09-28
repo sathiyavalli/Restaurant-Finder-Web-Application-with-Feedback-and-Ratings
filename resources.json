@@ -1,0 +1,82 @@
+[{
+ "city": "Chennai",
+ "restaurant": "SaravanaBhavan",
+ "Location": "Vadapalani",
+  "Hours" :  "10 am - 10 pm",
+  "Cost"  : "Rs 550 for two people",
+  "Phone" : "044 45678976",
+  "dish"  : "South Indian",
+  "feedback" : "good service"
+}, {
+ "city": "Chennai",
+ "restaurant": "SangeethaRestaurant",
+ "Location": "Guindy",
+  "Hours" :  "9:30 am - 10 pm",
+  "Cost"  : "Rs 500 for two people",
+  "Phone" : "044 45678975",
+  "dish"  : "South Indian, North Indian",
+  "feedback" : "good "
+}, {
+ "city": "Chennai",
+ "restaurant": "KFC",
+ "Location": "Ashoknagar",
+  "Hours" :  "11 am - 11 pm",
+  "Cost"  : "Rs 750 for two people",
+  "Phone" : "044 45678974",
+  "dish"  : "Fast food,Burgers, Noodles",
+  "feedback" : "Tasty food"
+},{
+ "city": "Coimbatore",
+ "restaurant": "Subway",
+ "Location": "Highway Road",
+  "Hours" :  "10 am - 11 pm",
+  "Cost"  : "Rs 400 for two people",
+  "Phone" : "041 42678976",
+  "dish"  : "Sandwiches, Burgers",
+  "feedback" : "clean and good"
+}, {
+ "city": "Coimbatore",
+ "restaurant": "Aryabhavan",
+ "Location": "Peelamedu",
+  "Hours" :  "8 am - 10 pm",
+  "Cost"  : "Rs 450 for two people",
+  "Phone" : "041 43678976",
+  "dish"  : "South Indian",
+  "feedback" : "good and clean"
+}, {
+ "city": "Coimbatore",
+ "restaurant": "Royalrestaurant",
+ "Location": "Periyar Road",
+  "Hours" :  "10 am - 11 pm",
+  "Cost"  : "Rs 500 for two people",
+  "Phone" : "041 44678976",
+  "dish"  : "Chinese, Italian",
+  "feedback" : "Tast and healthy foods"
+},{
+ "city": "Trichy",
+ "restaurant": "Highway Inn",
+ "Location": "Bridge Road",
+  "Hours" :  "10:30 am - 11 pm",
+  "Cost"  : "Rs 570 for two people",
+  "Phone" : "040 45578976",
+  "dish"  : "Chinese, South Indian",
+  "feedback" : "Good place"
+}, {
+ "city": "Trichy",
+ "restaurant": "Krishna bhavan",
+ "Location": "Temple Nagar",
+  "Hours" :  "8:30 am - 10 pm",
+  "Cost"  : "Rs 530 for two people",
+  "Phone" : "040 45648976",
+  "dish"  : "South Indian, North Indian",
+  "feedback" : "Nice place to eat with low cost"
+}, {
+ "city": "Trichy",
+ "restaurant": "Hot Chips",
+ "Location": "Chathiram BusStand",
+  "Hours" :  "11 am - 11 pm",
+  "Cost"  : "Rs 700 for two people",
+  "Phone" : "040 45628976",
+  "dish"  : "Chats, South Indian, North Indian, Meals",
+  "feedback" : "Excellent"
+}]
